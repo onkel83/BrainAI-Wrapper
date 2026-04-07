@@ -1,0 +1,37 @@
+plugins {
+    id 'java-library'
+}
+
+group = 'com.brainai.proed'
+version = '1.1.0'
+description = 'ProED Java Wrapper (Hybrid Ring-0 with ProKM Support)'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Java Native Access (JNA) Core
+    implementation 'net.java.dev.jna:jna:5.14.0'
+    
+    // JNA Platform (Erleichtert OS-Checks und Kernel-API Zugriffe)
+    implementation 'net.java.dev.jna:jna-platform:5.14.0'
+
+    // JUnit für das Testen des Wrappers (optional)
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// Stellt sicher, dass das JAR sauber gebaut wird
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

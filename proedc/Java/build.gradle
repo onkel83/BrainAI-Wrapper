@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'com.brainai'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JNA Kern-Bibliothek für den nativen Zugriff
+    implementation 'net.java.dev.jna:jna:5.13.0'
+    
+    // JNA Platform Erweiterungen für plattformspezifische Mappings
+    implementation 'net.java.dev.jna:jna-platform:5.13.0'
+}
+
+test {
+    useJUnitPlatform()
+}
